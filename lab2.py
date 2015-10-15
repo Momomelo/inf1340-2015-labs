@@ -16,6 +16,21 @@ The function should prompt the user for input until a legal value is
 entered. A legal value is any integer.
 
 """
+def whats_your_input():
+  output = ""
+  not_an_integer = True
+
+  while not_an_integer is True:
+    try:
+      output = int(raw_input("Number of sides:"))
+      not_an_integer = False
+    except:
+      ValueError
+      print "Input an integer."
+      continue
+
+  return output
+
 
 def name_that_shape():
     """
@@ -38,7 +53,7 @@ def name_that_shape():
 
     """
 
-    sides = int(raw_input("Number of sides:"))
+    sides = whats_your_input()
 
     if sides == 3:
         print("triangle")
@@ -59,4 +74,7 @@ def name_that_shape():
     else:
         print("Error")
 
-# name_that_shape()
+
+#name_that_shape()
+
+
