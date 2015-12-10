@@ -45,6 +45,14 @@ def test_months_with_no_caps():
         item = item.lower()
         assert days_in_month(item) == 30
 
+    for item in MONTHS_WITH_28_or_29:
+        item = item.lower()
+        assert days_in_month(item) == "28 or 29"
+
+    for item in MONTHS_WITH_31:
+        item = item.lower()
+        assert days_in_month(item) == 31
+
 
 def test_months_with_the_unexpected():
     """
