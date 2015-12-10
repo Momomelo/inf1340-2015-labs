@@ -41,36 +41,41 @@ def bill_of_sale(purchase):
 """
 
 PROVINCIAL_TAX = .05
-FEDRAL_TAX = .025
-RECIEPT = "reciept.txt"
-PURCHASE = 115
+FEDERAL_TAX = .025
+RECEIPT = "receipt.txt"
 
 
-def provincial_tax(PURCHASE):
-    taxed_purchase = PURCHASE * PROVINCIAL_TAX 
+def provincial_tax(amount):
+    taxed_purchase = amount * PROVINCIAL_TAX 
     return (str(taxed_purchase))
 
-def federal_tax(PURCHASE):
-    taxed_purchase = PURCHASE * FEDRAL_TAX
+def federal_tax(amount):
+    taxed_purchase = amount * FEDERAL_TAX
     return (str(taxed_purchase))
 
-def total_tax(PURCHASE):
-    taxed_purchase = PURCHASE * (FEDRAL_TAX + PROVINCIAL_TAX) 
+def total_tax(amount):
+    taxed_purchase = amount * (FEDERAL_TAX + PROVINCIAL_TAX) 
     return (str(taxed_purchase))
 
-def total_cost(PURCHASE):
-    sales_tax = 1 + (PROVINCIAL_TAX + FEDRAL_TAX)
-    taxed_purchase = PURCHASE * sales_tax
+def total_cost(amount):
+    sales_tax = 1 + (PROVINCIAL_TAX + FEDERAL_TAX)
+    taxed_purchase = amount * sales_tax
     return (str(taxed_purchase))
 
-with open(RECIEPT, 'w') as returned_reciept:
-    returned_reciept.write("Amount of purchase: " + str(PURCHASE) + "\n")
-    returned_reciept.write("Provincial tax: " + provincial_tax(PURCHASE) + "\n")
-    returned_reciept.write("Federal tax: " + federal_tax(PURCHASE) + "\n")
-    returned_reciept.write("Total tax: " + total_tax(PURCHASE) + "\n")
-    returned_reciept.write("Total sale: " + total_cost(PURCHASE) + "\n")
+def main(purchase):
+    with open(RECEIPT, 'w') as returned_receipt:
+        returned_receipt.write("Amount of purchase: " + str(purchase) + "\n")
+        returned_receipt.write("Provincial tax: " + provincial_tax(purchase) + "\n")
+        returned_receipt.write("Federal tax: " + federal_tax(purchase) + "\n")
+        returned_receipt.write("Total tax: " + total_tax(purchase) + "\n")
+        returned_receipt.write("Total sale: " + total_cost(purchase) + "\n")
 
-returned_reciept.close()
+    returned_receipt.close()
+
+main(300)
+
+# if __name__ == "__main__":
+#     sys.exit(main(sys.argv[1]))
 
 """
 THE CODE NEEDS TO OUTPUT ALL 5 LINES OF CODE OF THE PROVINCIAL TAX, DEFERAL TAX, TOTAL TAX, TOTAL SALE 

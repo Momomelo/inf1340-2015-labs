@@ -1,5 +1,0 @@
-Amount of purchase: 115
-Provincial tax: 5.75
-Federal tax: 2.875
-Total tax: 8.625
-Total sale: 123.625
